@@ -25,5 +25,7 @@ Route::group(['middleware' => ['web','auth']], function () {
     	return view('home');
 	});
 
+	Route::get('/profile', 'ProfileController@index');
+
 
 });
