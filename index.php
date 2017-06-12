@@ -1,7 +1,4 @@
-<html>
-<body>
-	Test Page from local
-	okay.
-</body>
-</html>
- 
+<?php
+
+header('location:/matrimony/public');
+?>
