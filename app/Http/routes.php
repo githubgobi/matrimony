@@ -18,14 +18,20 @@ Route::auth();
 Route::group(['middleware' => ['web','auth']], function () {
 
 	Route::get('/', function () {
-    	return view('home');
+
+		$user = Auth::user();
+    	return View::make('home')->with('user',$user);
 	});
 
 	Route::get('/home', function () {
-    	return view('home');
+		$user = Auth::user();
+    	return View::make('home')->with('user',$user);
 	});
 
-	Route::get('/profile', 'ProfileController@index');
+	Route::get('/error/{info?}', 'HomeController@error')->name('error');
 
+	Route::get('/profile/{id?}', 'ProfileController@index');
+
+	Route::get('/send_request/{id?}', 'RelationsController@index');
 
 });

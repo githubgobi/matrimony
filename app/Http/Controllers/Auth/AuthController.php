@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\UserDetails;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use DB;
+use Redirect;
 
 class AuthController extends Controller
 {
@@ -63,10 +66,32 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+
+      DB::beginTransaction();
+
+       $user_data = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        $user_details = UserDetails::create([
+            'user_id' => $user_data->id,
+            'profile_for' => $data['profile_for'],
+            'gender' => $data['gender'],
+            'dob' => $data['dob'],
+            'religion_id' => $data['religion_id'],
+            'mother_tongue' => $data['mother_tongue'],
+            'country_id' => $data['country_id'],
+            'mobile_number' => $data['mobile_number']
+        ]);
+      
+
+        if(!$user_data && !$user_details){
+            DB::rollBack();
+        }else{
+             DB::commit();
+            return $user_data;            
+        }
     }
 }
