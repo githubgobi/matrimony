@@ -5,3 +5,11 @@
 ## Matrimony
 
 This is a laravel based Matrimony website based on graph theory to connect all the people. 
+
+## Our other Projects
+
+Simple browser based "Point of Sales" system and it will fit for any retails shop. [Demo : Pos](http://pos.goeasytechnosolutions.com)
+
+ITax Application for android phones [Application Download : ITax](http://apps.goeasytechnosolutions.com)
+
+
