@@ -1,6 +1,6 @@
 # Rajkumar
 
-[![Official Website]](http://www.goeasytechnosolutions.com)
+[Official Website : GoEasy](http://www.goeasytechnosolutions.com)
 
 ## Matrimony
 
